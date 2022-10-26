@@ -1,0 +1,14 @@
+version: '3'
+services:
+  wiki:
+    #build: .
+    image: 'dcjulian29/dokuwiki:latest'
+    environment:
+      - DOCKERHOST=${COMPUTERNAME}
+    ports:
+      - target: 80
+        published: 8080
+    volumes:
+      - ./.docker/wiki-data:/var/www/html/data
+      - ./.docker/wiki-template:/var/www/html/lib/tpl/dokuwiki
+      - ./.docker/wiki-conf/local:/var/www/html/conf
