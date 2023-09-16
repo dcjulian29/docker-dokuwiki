@@ -1,8 +1,11 @@
 version: '3'
 services:
   wiki:
-    #build: .
-    image: 'dcjulian29/dokuwiki:latest'
+    build:
+      args:
+        - VERSION=2023.04.04a
+      context: .
+      dockerfile: Dockerfile
     environment:
       - DOCKERHOST=${COMPUTERNAME}
     ports:
