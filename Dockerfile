@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.description="A Docker Container that hosts a Doku
 ARG VERSION
 
 RUN apk update \
-  && apk add php82 php82-fpm php82-opcache php82-zlib php82-xml php82-gd php82-session php82-json nginx curl supervisor \
+  && apk add php83 php83-fpm php83-opcache php83-zlib php83-xml php83-gd php83-session php83-json nginx curl supervisor \
   && rm -rf /var/cache/apk/* \
   && curl -fsSL "https://download.dokuwiki.org/src/dokuwiki/dokuwiki-$(echo ${VERSION} | sed 's/\./-/g').tgz" -o /dokuwiki.tgz \
   && tar xzf /dokuwiki.tgz -C /var/www \
@@ -39,10 +39,10 @@ RUN apk update \
   && chown -R nobody.nobody /run \
   && chown -R nobody.nobody /var/lib/nginx \
   && chown -R nobody.nobody /var/log/nginx \
-  && chown -R nobody.nobody /var/log/php82
+  && chown -R nobody.nobody /var/log/php83
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./fpm.conf /etc/php82/php-fpm.conf
+COPY ./fpm.conf /etc/php83/php-fpm.conf
 COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 80
