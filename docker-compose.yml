@@ -3,7 +3,7 @@ services:
   wiki:
     build:
       args:
-        - VERSION=2023.04.04a
+        - VERSION=2024.02.06b
       context: .
       dockerfile: Dockerfile
     environment:
