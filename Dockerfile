@@ -35,11 +35,11 @@ RUN apk update \
   && mkdir -p /var/www/html/lib/plugins/gallery \
   && cp -R /tmp/splitbrain-dokuwiki-plugin-gallery-*/* /var/www/html/lib/plugins/gallery/ \
   && rm -Rf /tmp/* \
-  && chown -R nobody.nobody /var/www/html \
-  && chown -R nobody.nobody /run \
-  && chown -R nobody.nobody /var/lib/nginx \
-  && chown -R nobody.nobody /var/log/nginx \
-  && chown -R nobody.nobody /var/log/php83
+  && chown -R nobody:nobody /var/www/html \
+  && chown -R nobody:nobody /run \
+  && chown -R nobody:nobody /var/lib/nginx \
+  && chown -R nobody:nobody /var/log/nginx \
+  && chown -R nobody:nobody /var/log/php83
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./fpm.conf /etc/php83/php-fpm.conf
