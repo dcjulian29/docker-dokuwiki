@@ -7,8 +7,9 @@ ARG VERSION
 
 RUN apk update \
   && apk add php83 php83-fpm php83-opcache php83-zlib php83-xml php83-gd php83-session php83-json nginx curl supervisor \
-  && rm -rf /var/cache/apk/* \
-  && curl -fsSL "https://download.dokuwiki.org/src/dokuwiki/dokuwiki-$(echo ${VERSION} | sed 's/\./-/g').tgz" -o /dokuwiki.tgz \
+  && rm -rf /var/cache/apk/*
+
+RUN curl -fsSL "https://download.dokuwiki.org/src/dokuwiki/dokuwiki-$(echo ${VERSION} | sed 's/\./-/g').tgz" -o /dokuwiki.tgz \
   && tar xzf /dokuwiki.tgz -C /var/www \
   && rm /dokuwiki.tgz \
   && mv /var/www/dokuwiki* /var/www/html \
@@ -17,8 +18,9 @@ RUN apk update \
   && rm -Rf /var/www/html/lib/plugins/authmysql \
   && rm -Rf /var/www/html/lib/plugins/authpgsql \
   && rm -Rf /var/www/html/lib/plugins/popularity \
-  && rm -Rf /var/www/html/lib/plugins/plugin \
-  && curl -fsSL 'https://github.com/selfthinker/dokuwiki_plugin_wrap/archive/master.zip' -o /tmp/wrap.zip \
+  && rm -Rf /var/www/html/lib/plugins/plugin
+
+RUN curl -fsSL 'https://github.com/selfthinker/dokuwiki_plugin_wrap/archive/master.zip' -o /tmp/wrap.zip \
   && unzip /tmp/wrap.zip -d /tmp \
   && mkdir -p /var/www/html/lib/plugins/wrap \
   && cp -R /tmp/dokuwiki_plugin_wrap-master/* /var/www/html/lib/plugins/wrap/ \
