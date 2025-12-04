@@ -1,4 +1,4 @@
-FROM alpine:3.22
+FROM alpine:3.23
 
 LABEL org.opencontainers.image.source="https://github.com/dcjulian29/docker-dokuwiki"
 LABEL org.opencontainers.image.description="A Docker Container that hosts a Dokuwiki website"
